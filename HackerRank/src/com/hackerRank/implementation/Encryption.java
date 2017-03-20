@@ -15,25 +15,41 @@ public class Encryption {
 
 		int textLength = text.length();
 
-		double column = Math.floor(Math.sqrt(textLength));
-		double row = Math.ceil(Math.sqrt(textLength));
+		float rootLength = (float) Math.sqrt(textLength);
 
-		char[][] arr = new char[(int) row][(int) column];
+		int row = (int) Math.floor(rootLength);
+		int column = (int) Math.ceil(rootLength);
+
+		while (row * column < textLength) {
+			if (row < column) {
+				row = row + 1;
+			} else
+				column = column + 1;
+		}
+
+		char[][] arr = new char[row][column];
 
 		int c = 0;
-		for (int i = 0; i < (int) row; i++) {
-			for (int j = 0; j < (int) column; j++) {
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
 				if (c < textLength)
 					arr[i][j] = text.charAt(c++);
 			}
 		}
+		c = 0;
+		StringBuilder output = new StringBuilder();
+		for (int i = 0; i < column; i++) {
+			for (int j = 0; j < row; j++) {
+				if ((int) arr[j][i] != 0) {
+					output.append(arr[j][i]);
+					c++;
+				}
 
-		for (int i = 0; i < (int) column; i++) {
-			for (int j = 0; j < (int) row; j++) {
-				System.out.print(arr[j][i]);
 			}
-			System.out.print(" ");
+			if (c < textLength)
+				output.append(" ");
 		}
+		System.out.println(output.toString());
 	}
 
 }

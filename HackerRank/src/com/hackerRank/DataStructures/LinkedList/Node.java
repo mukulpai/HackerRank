@@ -9,11 +9,4 @@ public class Node {
 		this.data = data;
 		next = null;
 	}
-
-	public Node insertElements(int data) {
-		Node head = new Node(data);
-		
-//		head = current;
-		return head;
-	}
 }
