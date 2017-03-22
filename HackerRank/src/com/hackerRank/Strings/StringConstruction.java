@@ -1,4 +1,4 @@
-package com.java.strings;
+package com.hackerRank.Strings;
 
 import java.util.HashSet;
 import java.util.Scanner;
